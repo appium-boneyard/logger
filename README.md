@@ -1,16 +1,11 @@
 appium-logger
 ===================
 
-Work in progress, stay tuned!
+Basic logger defaulting to `npmlog` with special consideration for running
+tests (doesn't output logs when run with `_TESTING=1` in the env).
 
-## Watch
+```js
+import { default as log } from 'appium-logger';
 
-```
-npm run watch
-```
-
-## Test
-
-```
-npm test
+log.info("hi!");
 ```

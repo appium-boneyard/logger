@@ -3,11 +3,11 @@
 import { getDynamicLogger, restoreWriters, setupWriters,
          assertOutputContains } from './helpers';
 
-describe('logger', () => {
+describe('logger with force log', () => {
   let writers, log;
   before(() => {
     writers = setupWriters();
-    log = getDynamicLogger(false, false);
+    log = getDynamicLogger(true, true);
     log.level = 'silly';
   });
 
@@ -15,7 +15,7 @@ describe('logger', () => {
     restoreWriters(writers);
   });
 
-  it('should not rewrite log levels outside of testing', () => {
+  it('should not rewrite log levels even during testing', () => {
     log.silly('silly');
     assertOutputContains(writers, 'silly');
     log.verbose('verbose');

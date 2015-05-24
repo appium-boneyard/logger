@@ -9,8 +9,9 @@ function setupWriters () {
           'stderr': sinon.spy(process.stderr, 'write')};
 }
 
-function getDynamicLogger (testingMode) {
+function getDynamicLogger (testingMode, forceLogs) {
   process.env._TESTING = testingMode ? '1' : '0';
+  process.env._FORCE_LOGS = forceLogs ? '1' : '0';
   return getLogger();
 }
 

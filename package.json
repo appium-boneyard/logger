@@ -23,9 +23,9 @@
     "lib": "lib"
   },
   "dependencies": {
-    "babel-runtime": "^5.0.12",
-    "npmlog": "^1.2.0",
-    "q": "^1.1.2",
+    "babel-runtime": "^5.4.7",
+    "npmlog": "^1.2.1",
+    "q": "^1.4.1",
     "source-map-support": "^0.2.10"
   },
   "scripts": {
@@ -35,10 +35,10 @@
   },
   "devDependencies": {
     "appium-gulp-plugins": "^1.0.3",
-    "chai": "^2.2.0",
-    "chai-as-promised": "^4.1.1",
+    "chai": "^2.3.0",
+    "chai-as-promised": "^5.0.0",
     "gulp": "^3.8.11",
-    "lodash": "^3.6.0",
+    "lodash": "^3.9.1",
     "mochawait": "^2.0.0",
     "sinon": "^1.14.1"
   }

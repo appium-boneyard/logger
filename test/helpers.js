@@ -1,7 +1,6 @@
 import chai from 'chai';
 import sinon from 'sinon';
 import _ from 'lodash';
-import { getLogger } from '../lib/logger';
 chai.should();
 
 function setupWriters () {
@@ -9,11 +8,11 @@ function setupWriters () {
           'stderr': sinon.spy(process.stderr, 'write')};
 }
 
-function getDynamicLogger (testingMode, forceLogs) {
-  process.env._TESTING = testingMode ? '1' : '0';
-  process.env._FORCE_LOGS = forceLogs ? '1' : '0';
-  return getLogger();
-}
+//function getDynamicLogger (testingMode, forceLogs) {
+  //process.env._TESTING = testingMode ? '1' : '0';
+  //process.env._FORCE_LOGS = forceLogs ? '1' : '0';
+  //return getLogger();
+//}
 
 function restoreWriters (writers) {
   for (let w of _.values(writers)) {
@@ -41,4 +40,4 @@ function assertOutputDoesntContain (writers, output) {
 }
 
 export { setupWriters, restoreWriters, assertOutputContains,
-         assertOutputDoesntContain, getDynamicLogger };
+         assertOutputDoesntContain };

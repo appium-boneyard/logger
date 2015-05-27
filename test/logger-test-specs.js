@@ -3,7 +3,7 @@
 import { getDynamicLogger, restoreWriters, setupWriters,
          assertOutputDoesntContain } from './helpers';
 
-describe('logger', () => {
+describe('test logger', () => {
   let writers, log;
   before(() => {
     writers = setupWriters();

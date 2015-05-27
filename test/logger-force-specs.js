@@ -20,14 +20,15 @@ describe('logger with force log', () => {
     assertOutputContains(writers, 'silly');
     log.verbose('verbose');
     assertOutputContains(writers, 'verbose');
+    log.verbose('debug');
+    assertOutputContains(writers, 'debug');
     log.info('info');
     assertOutputContains(writers, 'info');
     log.http('http');
     assertOutputContains(writers, 'http');
     log.warn('warn');
     assertOutputContains(writers, 'warn');
-    log.error(null, 'error');
-    // npmlog adds a space before and a newline after error messages
-    assertOutputContains(writers, ' error\n');
+    log.error('error');
+    assertOutputContains(writers, 'error');
   });
 });

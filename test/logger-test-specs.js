@@ -22,7 +22,7 @@ describe('test logger', () => {
     log.http(text);
     log.warn(text);
     log.error(text);
+    (() => { log.errorAndThrow(text); }).should.throw(text);
     assertOutputDoesntContain(writers, text);
   });
 });
-

@@ -30,5 +30,8 @@ describe('logger with force log', () => {
     assertOutputContains(writers, 'warn');
     log.error('error');
     assertOutputContains(writers, 'error');
+    (() => { log.errorAndThrow('msg'); }).should.throw('msg');
+    assertOutputContains(writers, 'error');
+    assertOutputContains(writers, 'msg');
   });
 });

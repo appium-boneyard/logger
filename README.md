@@ -1,5 +1,10 @@
 appium-logger
 ===================
+[![NPM version](http://img.shields.io/npm/v/appium-logger.svg)](https://npmjs.org/package/appium-logger) 
+[![Downloads](http://img.shields.io/npm/dm/appium-logger.svg)](https://npmjs.org/package/appium-logger)
+
+[![Dependency Status](https://david-dm.org/appium/logger.svg)](https://david-dm.org/appium/appium-logger)
+[![devDependency Status](https://david-dm.org/appium/logger/dev-status.svg)](https://david-dm.org/appium/appium-logger#info=devDependencies)
 
 [![Build Status](https://travis-ci.org/appium/logger.svg?branch=master)](https://travis-ci.org/appium/logger)
 [![Coverage Status](https://coveralls.io/repos/appium/logger/badge.svg?branch=master)](https://coveralls.io/r/appium/logger?branch=master)

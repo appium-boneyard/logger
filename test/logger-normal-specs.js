@@ -2,8 +2,6 @@
 
 import { getDynamicLogger, restoreWriters, setupWriters,
          assertOutputContains } from './helpers';
-//import chai from 'chai';
-//const expect = chai.expect();
 
 describe('normal logger', () => {
   let writers, log;
@@ -34,8 +32,10 @@ describe('normal logger', () => {
     assertOutputContains(writers, 'error');
   });
   it('throw should not rewrite log levels outside of testing and throw error', () => {
-    (() => { log.errorAndThrow('msg'); }).should.throw('msg');
-    assertOutputContains(writers, 'msg');
+    (() => { log.errorAndThrow('msg1'); }).should.throw('msg1');
+    (() => { log.errorAndThrow(new Error('msg2')); }).should.throw('msg2');
+    assertOutputContains(writers, 'msg1');
+    assertOutputContains(writers, 'msg2');
   });
 });
 

@@ -23,7 +23,7 @@
     "lib": "lib"
   },
   "dependencies": {
-    "babel-runtime": "^5.4.7",
+    "babel-runtime": "5.5.5",
     "npmlog": "^1.2.1",
     "q": "^1.4.1",
     "source-map-support": "^0.3.1"

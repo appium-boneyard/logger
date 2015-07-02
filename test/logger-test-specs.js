@@ -14,6 +14,11 @@ describe('test logger', () => {
     restoreWriters(writers);
   });
 
+  it('should contains levels', () => {
+    log.levels.should.have.length.above(3);
+    log.levels[2].should.equal('debug');
+  });
+
   it('should rewrite npmlog levels during testing', () => {
     const text = 'hi';
     log.silly(text);

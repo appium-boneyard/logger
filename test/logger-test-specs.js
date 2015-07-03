@@ -19,6 +19,11 @@ describe('test logger', () => {
     log.levels[2].should.equal('debug');
   });
 
+  it('should unwrap', () => {
+    log.unwrap.should.exists;
+    log.unwrap().should.exists;
+  });
+
   it('should rewrite npmlog levels during testing', () => {
     const text = 'hi';
     log.silly(text);

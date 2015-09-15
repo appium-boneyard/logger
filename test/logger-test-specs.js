@@ -20,8 +20,8 @@ describe('test logger', () => {
   });
 
   it('should unwrap', () => {
-    log.unwrap.should.exists;
-    log.unwrap().should.exists;
+    log.unwrap.should.exist;
+    log.unwrap().should.exist;
   });
 
   it('should rewrite npmlog levels during testing', () => {

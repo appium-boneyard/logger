@@ -1,17 +1,17 @@
 // transpile:mocha
 
 import { getDynamicLogger, restoreWriters, setupWriters,
-         assertOutputContains } from './helpers';
+         assertOutputContains, assertOutputDoesntContain } from './helpers';
 
 describe('normal logger', () => {
   let writers, log;
-  before(() => {
+  beforeEach(() => {
     writers = setupWriters();
     log = getDynamicLogger(false, false);
     log.level = 'silly';
   });
 
-  after(() => {
+  afterEach(() => {
     restoreWriters(writers);
   });
 
@@ -36,6 +36,14 @@ describe('normal logger', () => {
     (() => { log.errorAndThrow(new Error('msg2')); }).should.throw('msg2');
     assertOutputContains(writers, 'msg1');
     assertOutputContains(writers, 'msg2');
+  });
+  it('should get and set log levels', () => {
+    log.level = 'warn';
+    log.level.should.equal('warn');
+    log.info('information');
+    log.warn('warning');
+    assertOutputDoesntContain(writers, 'information');
+    assertOutputContains(writers, 'warning');
   });
 });
 

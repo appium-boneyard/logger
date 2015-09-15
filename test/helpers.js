@@ -2,6 +2,8 @@ import chai from 'chai';
 import sinon from 'sinon';
 import _ from 'lodash';
 import { getLogger } from '../lib/logger';
+
+
 chai.should();
 
 function setupWriters () {
@@ -21,26 +23,30 @@ function restoreWriters (writers) {
   }
 }
 
-function assertOutputContains (writers, output) {
-  let someoneHadOutput = false;
+function someoneHadOutput (writers, output) {
+  let hadOutput = false;
   let matchOutput = sinon.match(function (value) {
     return value && value.indexOf(output) >= 0;
-  }, "matchOutput");
+  }, 'matchOutput');
 
-  for (let w of _.values(writers)) {
-    if (w.calledWith) {
-      someoneHadOutput = w.calledWithMatch(matchOutput);
-      if (someoneHadOutput) break;
+  for (let writer of _.values(writers)) {
+    if (writer.calledWith) {
+      hadOutput = writer.calledWithMatch(matchOutput);
+      if (hadOutput) break;
     }
   }
-  if (!someoneHadOutput) {
-    throw new Error("Expected someone to have been called with: '" + output + "'");
+  return hadOutput;
+}
+
+function assertOutputContains (writers, output) {
+  if (!someoneHadOutput(writers, output)) {
+    throw new Error(`Expected something to have been called with: '${output}'`);
   }
 }
 
 function assertOutputDoesntContain (writers, output) {
-  for (let w of _.values(writers)) {
-    _.flatten(w.args).should.not.contain(output);
+  if (someoneHadOutput(writers, output)) {
+    throw new Error(`Expected nothing to have been called with: '${output}'`);
   }
 }
 
